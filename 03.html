@@ -1,0 +1,79 @@
+<script>
+    const alunos = [
+        { nome: "Ana", notas: [7, 8, 9] },
+        { nome: "Carlos", notas: [5, 6, 4] },
+        { nome: "Bruna", notas: [9, 9, 10] }
+    ];
+
+    // 1. Calcular a média de um aluno
+    const calcularMedia = (nome) => {
+        const aluno = alunos.find(a => a.nome.toLowerCase() === nome.toLowerCase());
+        if (aluno) {
+            const media = aluno.notas.reduce((acc, nota) => acc + nota, 0) / aluno.notas.length;
+            return media.toFixed(2);
+        }
+        return "Aluno não encontrado";
+    };
+
+    // 2. Classificar aluno com base na média
+    const classificarAluno = (nome) => {
+        const aluno = alunos.find(a => a.nome.toLowerCase() === nome.toLowerCase());
+        if (aluno) {
+            const media = calcularMedia(nome);
+            if (media >= 7) {
+                return "Aprovado";
+            } else if (media >= 5) {
+                return "Recuperação";
+            } else {
+                return "Reprovado";
+            }
+        }
+        return "Aluno não encontrado";
+    };
+
+    // 3. Adicionar nota ao aluno
+    const adicionarNota = (nome, nota) => {
+        const aluno = alunos.find(a => a.nome.toLowerCase() === nome.toLowerCase());
+        if (aluno) {
+            aluno.notas.push(nota);
+            return `Nota ${nota} adicionada ao aluno ${nome}`;
+        }
+        return "Aluno não encontrado";
+    };
+
+    // 4. Menu interativo
+    function menu() {
+        let opcao;
+        do {
+            opcao = parseInt(prompt(
+                "Escolha uma opção:\n" +
+                "1 - Verificar Média do Aluno\n" +
+                "2 - Classificar Aluno\n" +
+                "3 - Adicionar Nota ao Aluno\n" +
+                "0 - Sair"
+            ));
+            switch (opcao) {
+                case 1:
+                    const nomeMedia = prompt("Digite o nome do aluno para verificar a média");
+                    alert(`Média de ${nomeMedia}: ${calcularMedia(nomeMedia)}`);
+                    break;
+                case 2:
+                    const nomeClassificacao = prompt("Digite o nome do aluno para verificar a classificação");
+                    alert(`${nomeClassificacao} está ${classificarAluno(nomeClassificacao)}.`);
+                    break;
+                case 3:
+                    const nomeNota = prompt("Digite o nome do aluno para adicionar a nota");
+                    const nota = parseFloat(prompt("Digite a nota a ser adicionada"));
+                    alert(adicionarNota(nomeNota, nota));
+                    break;
+                case 0:
+                    alert("");
+                    break;
+                default:
+                    alert("Opção inválida. Tente novamente");
+            }
+        } while (opcao !== 0);
+    }
+
+    menu();
+</script>
