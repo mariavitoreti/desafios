@@ -5,7 +5,7 @@
         { nome: "Bruna", notas: [9, 9, 10] }
     ];
 
-    // 1. Calcular a média de um aluno
+
     const calcularMedia = (nome) => {
         const aluno = alunos.find(a => a.nome.toLowerCase() === nome.toLowerCase());
         if (aluno) {
@@ -15,7 +15,6 @@
         return "Aluno não encontrado";
     };
 
-    // 2. Classificar aluno com base na média
     const classificarAluno = (nome) => {
         const aluno = alunos.find(a => a.nome.toLowerCase() === nome.toLowerCase());
         if (aluno) {
@@ -31,7 +30,6 @@
         return "Aluno não encontrado";
     };
 
-    // 3. Adicionar nota ao aluno
     const adicionarNota = (nome, nota) => {
         const aluno = alunos.find(a => a.nome.toLowerCase() === nome.toLowerCase());
         if (aluno) {
@@ -41,7 +39,6 @@
         return "Aluno não encontrado";
     };
 
-    // 4. Menu interativo
     function menu() {
         let opcao;
         do {
